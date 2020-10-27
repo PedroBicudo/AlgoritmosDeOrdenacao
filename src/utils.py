@@ -1,12 +1,11 @@
 import easygui
 from typing import List
-import Bubble_Sort
-import quicksort
-import BinaryInsertionSort
+from src import Bubble_Sort
+from src import BinaryInsertionSort
 import timeit
-import teste
+from src import teste
 
-class FileUtils:
+class FileUtils():
 
     def getNumerosFromFile(self) -> List[int]:
         numbers = []
@@ -35,7 +34,7 @@ class FileUtils:
         tempo.append(Fim-Inicio)
         print('binary')
         Inicio = timeit.default_timer()
-        quick.quick_sort(lista, 0, len(lista) - 1)
+        quick.quickSort(lista, 0, len(lista) - 1)
         print('quick')
         Fim = timeit.default_timer()
         tempo.append(Fim-Inicio)
