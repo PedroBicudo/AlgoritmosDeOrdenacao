@@ -4,20 +4,19 @@ class BinaryInsertionSort:
 
     def binary_search(self, lista_numeros, key, start, end) -> int:
         """Realiza a busca do valor no lista_numeros."""
-        if end <= start:
-            if key > lista_numeros[start]:
-                return start+1
+        while start <= end:
+            mid = (start + end) // 2
+            if lista_numeros[mid] == key:
+                return mid
+            
+            elif lista_numeros[mid] > key:
+                end = mid - 1
+            
             else:
-                return start
+                start = mid + 1
         
-        mid = (start + end) // 2
-        if lista_numeros[mid] == key:
-            return mid + 1
-        
-        if key > lista_numeros[mid]:
-            return self.binary_search(lista_numeros, key, mid+1, end)
-        else:
-            return self.binary_search(lista_numeros, key, start, mid-1)
+        return start
+            
 
     def binary_insertion_sort(self, lista_numeros) -> List[int]:
         """Ordena a lista"""
