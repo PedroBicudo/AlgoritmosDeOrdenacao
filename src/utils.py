@@ -67,9 +67,9 @@ class TempoAlgoritmos:
         return end - start    
 
     def _tempo_do_bubble_sort_para_ordenar_a_lista(self, lista) -> float:
-        bubble_sor = BubbleSort()
+        bubble_sort = BubbleSort()
         start = timeit.default_timer()
-        bubble_sor.bubble_sort(lista)
+        bubble_sort.bubble_sort(lista)
         end = timeit.default_timer()
         
         return end - start
