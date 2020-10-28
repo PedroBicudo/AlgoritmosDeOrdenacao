@@ -1,6 +1,6 @@
 from BinaryInsertionSort import BinaryInsertionSort
 from BubbleSort import BubbleSort
-from quicksort import Quick_Sort
+from QuickSort import QuickSort
 from typing import List
 import easygui
 import _io
@@ -59,9 +59,9 @@ class TempoAlgoritmos:
         return end - start
 
     def _tempo_do_quick_sort_para_ordernar_a_lista(self, lista) -> float:
-        quick_sort = Quick_Sort()
+        quick_sort = QuickSort()
         start = timeit.default_timer()
-        quick_sort.quicksort(lista, 0, len(lista)-1)
+        quick_sort.quick_sort(lista, 0, len(lista)-1)
         end = timeit.default_timer()
         
         return end - start    
