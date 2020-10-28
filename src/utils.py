@@ -1,9 +1,9 @@
 import easygui
 from typing import List
-from src import Bubble_Sort
-from src import BinaryInsertionSort
-import timeit
-from src import teste
+# from src import Bubble_Sort
+# from src import BinaryInsertionSort
+# import timeit
+# from src import teste
 
 class FileUtils():
 
@@ -12,10 +12,13 @@ class FileUtils():
         file_path = easygui.fileopenbox()
         file = open(f"{file_path}", "r")
         for line in file:
-            valor = int(line.replace("\n", ""))
+            valor = int(self._remover_break_line(line))
             numbers.append(valor)
         return numbers
 
+    def _remover_break_line(self, text: str) -> str:
+        return text.replace("\n", "")
+    
     def rodarMetodos(self, lista) -> List[float]:
         tempo = []
         #Instanciando os metodos
