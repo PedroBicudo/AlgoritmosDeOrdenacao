@@ -1,5 +1,3 @@
-from typing import List
-
 class BinaryInsertionSort:
 
     def binary_search(self, lista_numeros, key, start, end) -> int:
@@ -18,8 +16,7 @@ class BinaryInsertionSort:
         return start
             
 
-    def binary_insertion_sort(self, lista_numeros) -> List[int]:
-        """Ordena a lista"""
+    def binary_insertion_sort(self, lista_numeros):
         for i in range(1, len(lista_numeros)):
             j = i - 1
             key = lista_numeros[i]
@@ -29,7 +26,4 @@ class BinaryInsertionSort:
                 lista_numeros[j+1] = lista_numeros[j]
                 j -= 1
 
-            lista_numeros[j+1] = key
-        
-        return lista_numeros
-    
+            lista_numeros[j+1] = key    
