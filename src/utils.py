@@ -1,4 +1,5 @@
 import easygui
+import _io
 from typing import List
 # from src import Bubble_Sort
 # from src import BinaryInsertionSort
@@ -9,15 +10,22 @@ class FileUtils():
 
     def getNumerosFromFile(self) -> List[int]:
         numbers = []
-        file_path = easygui.fileopenbox()
-        file = open(f"{file_path}", "r")
-        for line in file:
+        file_content = self._abrir_arquivo()
+        for line in file_content:
             valor = int(self._remover_break_line(line))
             numbers.append(valor)
         return numbers
-
+    
     def _remover_break_line(self, text: str) -> str:
         return text.replace("\n", "")
+
+    def _abrir_arquivo(self) -> _io.TextIOWrapper:
+        file_path = self._obter_caminho_do_arquivo_usando_easygui()
+        file = open(f"{file_path}", "r")
+        return file
+
+    def _obter_caminho_do_arquivo_usando_easygui(self) -> str:
+        return easygui.fileopenbox()
     
     def rodarMetodos(self, lista) -> List[float]:
         tempo = []
