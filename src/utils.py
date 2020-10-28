@@ -1,10 +1,11 @@
+from BinaryInsertionSort import BinaryInsertionSort
+from Bubble_Sort import bubble_sort
+from teste import Quick_Teste
+from typing import List
 import easygui
 import _io
-from typing import List
-# from src import Bubble_Sort
-# from src import BinaryInsertionSort
-# import timeit
-# from src import teste
+import sys
+import timeit
 
 class FileUtils():
 
@@ -26,28 +27,49 @@ class FileUtils():
 
     def _obter_caminho_do_arquivo_usando_easygui(self) -> str:
         return easygui.fileopenbox()
-    
-    def rodarMetodos(self, lista) -> List[float]:
-        tempo = []
-        #Instanciando os metodos
-        Bubsort = Bubble_Sort.bubble_sort()
-        quick = teste.Quick_Teste()
-        binary = BinaryInsertionSort.BinaryInsertionSort()
-        #Recebendo a lista e marcando o tempo de execução de cada metodo em uma lista
-        Inicio = timeit.default_timer()
-        Bubsort.bubbleSort(lista)
-        print('bubble')
-        Fim = timeit.default_timer()
-        tempo.append(Fim-Inicio)
-        Inicio = timeit.default_timer()
-        binary.binary_insertion_sort(lista)
-        Fim = timeit.default_timer()
-        tempo.append(Fim-Inicio)
-        print('binary')
-        Inicio = timeit.default_timer()
-        quick.quickSort(lista, 0, len(lista) - 1)
-        print('quick')
-        Fim = timeit.default_timer()
-        tempo.append(Fim-Inicio)
 
-        return tempo
+
+class TempoAlgoritmos:
+
+    def obter_tempo_de_execucao_de_cada_algoritmo(self, lista) -> List[float]:
+        """Uma lista de contendo o tempo de algoritmo é retornada.
+
+            posicao[0] -> Bubble Sort
+            posicao[1] -> Binary Insertion Sort
+            posicao[2] -> Quick Sort
+
+        """
+        lista_binary = lista.copy()
+        lista_quick = lista.copy()
+        lista_bubble = lista.copy()
+
+        return [
+            self._tempo_do_bubble_sort_para_ordenar_a_lista(lista_bubble),
+            self._tempo_do_binary_insertion_sort_para_ordernar_a_lista(lista_binary),
+            self._tempo_do_quick_sort_para_ordernar_a_lista(lista_quick)
+        ]
+        
+
+    def _tempo_do_binary_insertion_sort_para_ordernar_a_lista(self, lista) -> float:
+        binary_insertion_sort = BinaryInsertionSort()
+        start = timeit.default_timer()
+        binary_insertion_sort.binary_insertion_sort(lista)
+        end = timeit.default_timer()
+
+        return end - start
+
+    def _tempo_do_quick_sort_para_ordernar_a_lista(self, lista) -> float:
+        quick_sort = Quick_Teste()
+        start = timeit.default_timer()
+        quick_sort.quick_sort(lista, 0, len(lista)-1)
+        end = timeit.default_timer()
+        
+        return end - start    
+
+    def _tempo_do_bubble_sort_para_ordenar_a_lista(self, lista) -> float:
+        bubble_sor = bubble_sort()
+        start = timeit.default_timer()
+        bubble_sor.bubbleSort(lista)
+        end = timeit.default_timer()
+        
+        return end - start
