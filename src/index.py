@@ -1,11 +1,7 @@
 from utils import FileUtils, TempoAlgoritmos
 import utils
-import sys
 from matplotlib import pyplot as plt
 
-#Aumentando o Tamanho do Estouro de Pilha
-print(sys.getrecursionlimit())
-sys.setrecursionlimit(500000)
 #Declaração de Variaveis e Parametros
 metodos = ['Bubble Sort', 'Binary Insertion Sort' ,'Quick Sort']
 plt.style.use("classic")
