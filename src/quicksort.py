@@ -1,26 +1,28 @@
-import random
+class QuickSort():
 
-class Quick_Sort():
-
-    def quicksort(self,lista, inicio=0, fim=None):
-        if fim is None:
-            fim = len(lista) - 1
+    def quick_sort(self, lista_numeros, inicio: int, fim: int):
         if inicio < fim:
-            posPivo = self.particao(lista, inicio, fim)
-            # recursivamente na sublista à esquerda (menores)
-            self.quicksort(lista, inicio, posPivo-1)
-            # recursivamente na sublista à direita (maiores)
-            self.quicksort(lista, posPivo+1, fim)
-
-    def particao(self,lista, inicio, fim):
-        pivo = lista[fim]
+            posPivo = self.particao(lista_numeros, inicio, fim)
+            # recursivamente na sublista_numeros à esquerda (menores)
+            self.quick_sort(lista_numeros, inicio, posPivo-1)
+            # recursivamente na sublista_numeros à direita (maiores)
+            self.quick_sort(lista_numeros, posPivo+1, fim)
+ 
+    def particao(self, lista_numeros, inicio: int, fim: int):
+        pivo = lista_numeros[fim]
         i = inicio
         for j in range(inicio, fim):
             # j sempre avança, pois representa o elemento em análise
             # e delimita os elementos maiores que o pivô
-            if lista[j] <= pivo:
-                lista[j], lista[i] = lista[i], lista[j]
+            if lista_numeros[j] <= pivo:
+                tmp = lista_numeros[j]
+                lista_numeros[j] = lista_numeros[i]
+                lista_numeros[i] = tmp
                 # incrementa-se o limite dos elementos menores que o pivô
                 i = i + 1
-        lista[i], lista[fim] = lista[fim], lista[i]
+        
+        tmp = lista_numeros[i]
+        lista_numeros[i] = lista_numeros[fim]
+        lista_numeros[fim] = tmp
+        
         return i
