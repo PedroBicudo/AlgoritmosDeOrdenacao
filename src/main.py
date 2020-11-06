@@ -6,7 +6,6 @@ import utils
 
 
 class PlotAlgoritmos:
-
     ALGORITMOS = ['Bubble Sort', 'Binary Insertion Sort' ,'Quick Sort']
     
     def __init__(self):
@@ -36,15 +35,21 @@ class PlotAlgoritmos:
     def adicionar_tempo_de_mil_numeros_ao_plot(self):
         tempos = self._obter_tempo_de_execucao_dos_algoritmos()
         self.sub_plot_mil_numeros.bar(PlotAlgoritmos.ALGORITMOS, tempos)
+        for index, value in enumerate(tempos):
+            self.sub_plot_mil_numeros.text( index, value, str(value))
 
     def adicionar_tempo_de_cinco_mil_numeros_ao_plot(self):
         tempos = self._obter_tempo_de_execucao_dos_algoritmos()
         self.sub_plot_cinco_mil_numeros.bar(PlotAlgoritmos.ALGORITMOS, tempos)
+        for index, value in enumerate(tempos):
+            self.sub_plot_cinco_mil_numeros.text( index, value, str(value))
 
     def adicionar_tempo_de_dez_mil_numeros_ao_plot(self):
         tempos = self._obter_tempo_de_execucao_dos_algoritmos()
         self.sub_plot_dez_mil_numeros.bar(PlotAlgoritmos.ALGORITMOS, tempos)
-    
+        for index, value in enumerate(tempos):
+            self.sub_plot_dez_mil_numeros.text(index, value, str(value))
+
     def _obter_tempo_de_execucao_dos_algoritmos(self) -> List[float]:
         numeros = self.file_utils.getNumerosFromFile()
         tempos = self.tempo_algoritmos.obter_tempo_de_execucao_de_cada_algoritmo(numeros)
@@ -61,4 +66,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-    
