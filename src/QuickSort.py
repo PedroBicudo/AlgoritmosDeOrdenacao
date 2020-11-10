@@ -18,12 +18,13 @@ class QuickSort():
                 # incrementa-se o limite dos elementos menores que o pivô
                 i = i + 1
 
-                tmp = lista_numeros[j]
-                lista_numeros[j] = lista_numeros[i]
-                lista_numeros[i] = tmp
+                self._trocar_valores_de_posicao(lista_numeros, i, j)
                 
-        tmp = lista_numeros[i + 1]
-        lista_numeros[i + 1] = lista_numeros[fim]
-        lista_numeros[fim] = tmp
+        self._trocar_valores_de_posicao(lista_numeros, i+1, fim)
         
         return i + 1
+
+    def _trocar_valores_de_posicao_na_lista(self, lista, pos_primeira, pos_segunda):
+        tmp = lista[pos_primeira]
+        lista[pos_primeira] = lista[pos_segunda]
+        lista[pos_segunda] = tmp
