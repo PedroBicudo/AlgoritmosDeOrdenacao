@@ -18,9 +18,9 @@ class QuickSort():
                 # incrementa-se o limite dos elementos menores que o pivô
                 i = i + 1
 
-                self._trocar_valores_de_posicao(lista_numeros, i, j)
+                self._trocar_valores_de_posicao_na_lista(lista_numeros, i, j)
                 
-        self._trocar_valores_de_posicao(lista_numeros, i+1, fim)
+        self._trocar_valores_de_posicao_na_lista(lista_numeros, i+1, fim)
         
         return i + 1
 
