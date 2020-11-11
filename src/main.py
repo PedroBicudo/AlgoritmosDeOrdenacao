@@ -25,6 +25,7 @@ class PlotAlgoritmos:
     
     def mostrar_plot_de_todas_as_quantias_de_numeros(self):
         self._definir_nomes_dos_labels_de_cada_sub_plot()
+        pyplot.subplots_adjust(hspace=0.5)
         pyplot.show()
 
     def _definir_nomes_dos_labels_de_cada_sub_plot(self):
