@@ -1,5 +1,5 @@
 class QuickSort():
-
+    
     def quick_sort(self, lista_numeros, inicio: int, fim: int):
         if inicio < fim:
             posPivo = self.particao(lista_numeros, inicio, fim)
@@ -10,19 +10,21 @@ class QuickSort():
  
     def particao(self, lista_numeros, inicio: int, fim: int):
         pivo = lista_numeros[fim]
-        i = inicio
+        i = inicio - 1
         for j in range(inicio, fim):
             # j sempre avança, pois representa o elemento em análise
             # e delimita os elementos maiores que o pivô
             if lista_numeros[j] <= pivo:
-                tmp = lista_numeros[j]
-                lista_numeros[j] = lista_numeros[i]
-                lista_numeros[i] = tmp
                 # incrementa-se o limite dos elementos menores que o pivô
                 i = i + 1
+
+                self._trocar_valores_de_posicao_na_lista(lista_numeros, i, j)
+                
+        self._trocar_valores_de_posicao_na_lista(lista_numeros, i+1, fim)
         
-        tmp = lista_numeros[i]
-        lista_numeros[i] = lista_numeros[fim]
-        lista_numeros[fim] = tmp
-        
-        return i
+        return i + 1
+
+    def _trocar_valores_de_posicao_na_lista(self, lista, pos_primeira, pos_segunda):
+        tmp = lista[pos_primeira]
+        lista[pos_primeira] = lista[pos_segunda]
+        lista[pos_segunda] = tmp
